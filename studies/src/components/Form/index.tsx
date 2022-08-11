@@ -1,4 +1,6 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
+
 import { ITask } from '../../types/tasks'
 import Button from '../Button'
 
@@ -14,7 +16,11 @@ class Form extends React.Component<{
 
   addTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    this.props.setTasks(oldTasks => [...oldTasks, { ...this.state }])
+    this.props.setTasks(oldTasks => [
+      ...oldTasks,
+      { ...this.state, selected: false, completed: false, id: uuidv4() }
+    ])
+    this.setState({ task: '', time: '00:00' })
   }
 
   render() {
