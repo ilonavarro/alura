@@ -1,15 +1,17 @@
 @import 'styles/variaveis';
 @import 'styles/breakpoints';
-
-$massas: #d73b3b;
-$carnes: #30201e;
-$combos: #e6c864;
-$veganos: #80aa40;
-
 .item {
+  align-items: center;
+  border-radius: 0.625rem;
+  cursor: pointer;
   display: flex;
   flex-wrap: wrap;
+  padding: 1.25rem;
+  transition: 0.2s ease-in;
   width: 90%;
+  &:hover {
+    background-color: $grey;
+  }
   &__imagem {
     min-width: 15rem;
     @media (max-width: $desktop_xsm) {
@@ -26,7 +28,7 @@ $veganos: #80aa40;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 0 1.25rem;
+    margin: 0 1.25rem;
     @media (max-width: $desktop_xsm) {
       flex-direction: row;
       margin-top: 1.25rem;
@@ -46,57 +48,5 @@ $veganos: #80aa40;
       max-width: 37.5rem;
       margin-bottom: 1.25rem;
     }
-  }
-  &__tags {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 1.25rem;
-    max-width: 43.75rem;
-    @media (max-width: $desktop_xsm) {
-      justify-content: flex-end;
-    }
-    @media (max-width: $mobile) {
-      justify-content: flex-start;
-    }
-    > div {
-      margin: 0.625rem;
-    }
-  }
-  &__tipo {
-    align-items: center;
-    border-radius: 0.125rem;
-    display: flex;
-    font-weight: bold;
-    height: 2.5rem;
-    justify-content: center;
-    padding: 0.625rem 1.875rem;
-    &__massas {
-      background-color: $massas;
-      color: #ffffff;
-    }
-    &__carnes {
-      background-color: $carnes;
-      color: #ffffff;
-    }
-    &__combos {
-      background-color: $combos;
-    }
-    &__veganos {
-      background-color: $veganos;
-    }
-  }
-  &__porcao,
-  &__qtdpessoas,
-  &__valor {
-    align-items: center;
-    display: flex;
-    font-size: 1.25rem;
-    font-weight: bold;
-    justify-content: center;
-  }
-  &__valor {
-    color: $red;
-    font-size: 1.7rem;
   }
 }
