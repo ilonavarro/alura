@@ -1,4 +1,8 @@
 html {
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
   background: #4b69fd;
   border: 2px solid black;
   font-family: 'Poppins', sans-serif;
@@ -8,4 +12,23 @@ html {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+section {
+  width: 100%;
+  text-align: center;
+  max-width: 900px;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 32px;
+  margin-bottom: 36px;
+  color: #4b69fd;
+}
+
+ul li {
+  font-size: 18px;
+  font-weight: 300;
+  margin: 8px 0;
 }
