@@ -1,0 +1,53 @@
+main {
+  margin: 0 1.5rem;
+}
+
+.principal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.galeria {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-left: 17%;
+  margin-top: 1rem;
+}
+
+/*
+
+Tags
+@import "../../styles/variaveis";
+
+.tags {
+  width: 65vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $cor-do-texto;
+  font-family: $fonte-normal;
+  font-size: 1rem;
+
+  p {
+    font-size: 1.25rem;
+  }
+
+  &__lista {
+    list-style: none;
+    width: 23.75rem;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+
+    li {
+      background-color: $tag-color;
+      padding: .375rem .625rem;
+      border-radius: .5rem;
+      cursor: pointer;
+    }
+  }
+}
+*/
