@@ -23,32 +23,11 @@
   margin: 1.5rem 0 1.75rem;
 }
 
-.botaoLer {
-  display: inline-block;
-  border-radius: 1.5rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.125rem;
-  line-height: 1.125rem;
-  background-color: var(--azul-medio);
-  color: var(--branco);
-  border: 0.1875rem solid var(--azul-medio);
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.botaoLer:hover {
-  border: 0.1875rem solid var(--azul-escuro);
-}
-
 @media (max-width: 68.75rem) {
   .post {
     width: 21rem;
   }
   .titulo {
     font-weight: 600;
-  }
-  .botaoLer {
-    padding: 0.6875rem 1.5rem;
-    font-size: 1.375rem;
   }
 }
