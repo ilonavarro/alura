@@ -1,0 +1,7 @@
+.link {
+  color: var(--branco);
+  font-size: 1.125rem;
+  font-weight: 400;
+  padding: 1em;
+  text-decoration: none;
+}
