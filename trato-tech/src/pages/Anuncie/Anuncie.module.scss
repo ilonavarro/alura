@@ -25,4 +25,15 @@
       background: #ffffff;
     }
   }
+  .input-erro {
+    outline: 2px solid #ff0000;
+    background-color: #ffffff;
+    &:focus {
+      outline: 2px solid #ff0000;
+      background: #ffffff;
+    }
+  }
+  .mensagem-erro {
+    color: #ff0000;
+  }
 }

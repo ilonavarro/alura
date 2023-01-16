@@ -284,14 +284,17 @@ const itensSlice = createSlice({
   initialState,
   reducers: {
     mudarFavorito: (state, { payload }) => {
-      state = state.map(item => {
+      state.map(item => {
         if (item.id === payload) item.favorito = !item.favorito
         return item
       })
+    },
+    cadastrarItem: (state, { payload }) => {
+      state.push({ ...payload, id: uuid() })
     }
   }
 })
 
-export const { mudarFavorito } = itensSlice.actions
+export const { mudarFavorito, cadastrarItem } = itensSlice.actions
 
 export default itensSlice.reducer
