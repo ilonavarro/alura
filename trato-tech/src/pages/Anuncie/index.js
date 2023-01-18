@@ -5,6 +5,7 @@ import styles from './Anuncie.module.scss'
 import { useForm } from 'react-hook-form'
 import { cadastrarItem } from 'store/reducers/itens'
 import { useParams } from 'react-router-dom'
+import Input from 'components/Input'
 
 export default function Anuncie() {
   const dispatch = useDispatch()
@@ -26,7 +27,7 @@ export default function Anuncie() {
     <div className={styles.container}>
       <Header titulo='Anuncie aqui' descricao='Anuncie seu produto aqui de forma fácil' />
       <form className={styles.formulario} onSubmit={handleSubmit(cadastrar)}>
-        <input
+        <Input
           className={errors.titulo ? styles['input-erro'] : ''}
           {...register('titulo', { required: retornaErro('nome') })}
           placeholder='Nome do produto'
@@ -35,7 +36,7 @@ export default function Anuncie() {
         {errors.titulo && (
           <span className={styles['mensagem-erro']}> {errors.titulo.message} </span>
         )}
-        <input
+        <Input
           className={errors.descricao ? styles['input-erro'] : ''}
           {...register('descricao', { required: retornaErro('descrição') })}
           placeholder='Descrição do produto'
@@ -44,7 +45,7 @@ export default function Anuncie() {
         {errors.descricao && (
           <span className={styles['mensagem-erro']}> {errors.descricao.message} </span>
         )}
-        <input
+        <Input
           className={errors.foto ? styles['input-erro'] : ''}
           {...register('foto', { required: retornaErro('imagem') })}
           placeholder='Url da imagem do produto'
@@ -70,7 +71,7 @@ export default function Anuncie() {
         {errors.categoria && (
           <span className={styles['mensagem-erro']}> {errors.categoria.message} </span>
         )}
-        <input
+        <Input
           className={errors.preco ? styles['input-erro'] : ''}
           {...register('preco', { required: retornaErro('preço'), valueAsNumber: true })}
           type='number'

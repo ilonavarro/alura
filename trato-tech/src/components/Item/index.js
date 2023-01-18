@@ -5,14 +5,16 @@ import {
   AiFillMinusCircle,
   AiFillPlusCircle,
   AiOutlineCheck,
-  AiFillEdit
+  AiFillEdit,
+  AiFillCloseCircle
 } from 'react-icons/ai'
 import { FaCartPlus } from 'react-icons/fa'
-import { mudarFavorito } from 'store/reducers/itens'
+import { mudarFavorito, mudarItem } from 'store/reducers/itens'
 import { useDispatch, useSelector } from 'react-redux'
 import { mudarCarrinho, mudarQuantidade } from 'store/reducers/carrinho'
 import classNames from 'classnames'
 import { useState } from 'react'
+import Input from 'components/Input'
 
 const iconeProps = { size: 24, color: '#041833' }
 const quantidadeProps = { size: 32, color: '#1875E8' }
@@ -45,7 +47,10 @@ export default function Item({
         <AiOutlineCheck
           {...iconeProps}
           className={styles['item-acao']}
-          onClick={() => setModoDeEdicao(false)}
+          onClick={() => {
+            setModoDeEdicao(false)
+            dispatch(mudarItem({ id: id, item: { titulo: novoTitulo } }))
+          }}
         />
       ) : (
         <AiFillEdit
@@ -62,13 +67,14 @@ export default function Item({
         [styles.itemNoCarrinho]: carrinho
       })}
     >
+      <AiFillCloseCircle {...iconeProps} className={styles['item-acao']} />
       <div className={styles['item-imagem']}>
         <img src={foto} alt={titulo} />
       </div>
       <div className={styles['item-descricao']}>
         <div className={styles['item-titulo']}>
           {modoDeEdicao ? (
-            <input
+            <Input
               value={novoTitulo}
               onChange={evento => setNovoTitulo(evento.target.value)}
             />
