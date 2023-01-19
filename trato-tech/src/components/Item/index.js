@@ -9,25 +9,16 @@ import {
   AiFillCloseCircle
 } from 'react-icons/ai'
 import { FaCartPlus } from 'react-icons/fa'
-import { mudarFavorito, mudarItem } from 'store/reducers/itens'
+import { deletarItem, mudarFavorito, mudarItem } from 'store/reducers/itens'
 import { useDispatch, useSelector } from 'react-redux'
 import { mudarCarrinho, mudarQuantidade } from 'store/reducers/carrinho'
 import classNames from 'classnames'
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import Input from 'components/Input'
 
 const iconeProps = { size: 24, color: '#041833' }
 const quantidadeProps = { size: 32, color: '#1875E8' }
-export default function Item({
-  titulo,
-  foto,
-  descricao,
-  preco,
-  favorito,
-  id,
-  carrinho,
-  quantidade
-}) {
+function Item({ titulo, foto, descricao, preco, favorito, id, carrinho, quantidade }) {
   const [modoDeEdicao, setModoDeEdicao] = useState(false)
   const [novoTitulo, setNovoTitulo] = useState(titulo)
   const dispatch = useDispatch()
@@ -67,7 +58,11 @@ export default function Item({
         [styles.itemNoCarrinho]: carrinho
       })}
     >
-      <AiFillCloseCircle {...iconeProps} className={styles['item-acao']} />
+      <AiFillCloseCircle
+        {...iconeProps}
+        className={`${styles['item-acao']} ${styles['item-deletar']}`}
+        onClick={() => dispatch(deletarItem(id))}
+      />
       <div className={styles['item-imagem']}>
         <img src={foto} alt={titulo} />
       </div>
@@ -134,3 +129,5 @@ export default function Item({
     </div>
   )
 }
+
+export default memo(Item)

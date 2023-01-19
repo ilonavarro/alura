@@ -1,12 +1,7 @@
+import { memo } from 'react'
 import styles from './TituloComImagem.module.scss'
 
-export default function TituloComImagem({
-  titulo,
-  descricao,
-  imagem,
-  className,
-  children
-}) {
+function TituloComImagem({ titulo, descricao, imagem, className, children }) {
   return (
     <div className={`${className} ${styles.header}`}>
       <div className={styles['header-texto']}>
@@ -20,3 +15,5 @@ export default function TituloComImagem({
     </div>
   )
 }
+
+export default memo(TituloComImagem)
