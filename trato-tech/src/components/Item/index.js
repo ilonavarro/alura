@@ -61,7 +61,10 @@ function Item({ titulo, foto, descricao, preco, favorito, id, carrinho, quantida
       <AiFillCloseCircle
         {...iconeProps}
         className={`${styles['item-acao']} ${styles['item-deletar']}`}
-        onClick={() => dispatch(deletarItem(id))}
+        onClick={() => {
+          dispatch(deletarItem(id))
+          resolverCarrinho(id)
+        }}
       />
       <div className={styles['item-imagem']}>
         <img src={foto} alt={titulo} />
