@@ -8,6 +8,7 @@ const { toast } = createStandaloneToast()
 const initialState = []
 
 export const carregarCategorias = createAction('categorias/carregarCategorias')
+export const carregarUmaCategoria = createAction('categorias/carregarUmaCategoria')
 
 export const buscarCategorias = createAsyncThunk(
   'categorias/buscar',
@@ -17,46 +18,24 @@ export const buscarCategorias = createAsyncThunk(
 const categoriasSlice = createSlice({
   name: 'categorias',
   initialState,
+  reducers: {
+    adicionarTodasAsCategorias: (state, { payload }) => {
+      return payload
+    }
+  },
   extraReducers: builder => {
-    builder
-      .addCase(buscarCategorias.fulfilled, (state, { payload }) => {
-        toast({
-          title: 'Sucesso!',
-          description: 'Categorias carregadas com sucesso',
-          status: 'success',
-          duration: 2000,
-          isClosable: true
-        })
-        return payload
+    builder.addCase(resetarCarrinho.type, () => {
+      toast({
+        title: 'Sucesso!',
+        description: 'Compra finalizada com sucesso',
+        status: 'success',
+        duration: 2000,
+        isClosable: true
       })
-      .addCase(buscarCategorias.pending, (state, { payload }) => {
-        toast({
-          title: 'Carregando...',
-          description: 'Carregando categorias',
-          status: 'loading',
-          duration: 2000,
-          isClosable: true
-        })
-      })
-      .addCase(buscarCategorias.rejected, (state, { payload }) => {
-        toast({
-          title: 'Erro',
-          description: 'Erro ao carregar categorias',
-          status: 'error',
-          duration: 2000,
-          isClosable: true
-        })
-      })
-      .addCase(resetarCarrinho.type, () => {
-        toast({
-          title: 'Sucesso!',
-          description: 'Compra finalizada com sucesso',
-          status: 'success',
-          duration: 2000,
-          isClosable: true
-        })
-      })
+    })
   }
 })
+
+export const { adicionarTodasAsCategorias } = categoriasSlice.actions
 
 export default categoriasSlice.reducer

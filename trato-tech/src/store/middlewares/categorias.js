@@ -1,11 +1,35 @@
+import { createStandaloneToast } from '@chakra-ui/toast'
 import { createListenerMiddleware } from '@reduxjs/toolkit'
-import { carregarCategorias } from 'store/reducers/categorias'
+import categoriasService from 'services/categorias'
+import {
+  adicionarTodasAsCategorias,
+  carregarCategorias,
+  carregarUmaCategoria
+} from 'store/reducers/categorias'
+import criarTarefa from './utils/criarTarefa'
 
 export const listener = createListenerMiddleware()
+const { toast } = createStandaloneToast()
 
 listener.startListening({
   actionCreator: carregarCategorias,
-  effect: async action => {
-    console.log('Buscando categorias: ', action)
+  effect: async (action, { dispatch, fork, unsubscribe }) => {
+    await criarTarefa({
+      fork,
+      dispatch,
+      action: adicionarTodasAsCategorias,
+      busca: categoriasService.buscar,
+      textoCarregando: 'Carregando categorias',
+      textoSucesso: 'Categorias carregadas com sucesso!',
+      textoErro: 'Erro ao carregar categorias'
+    })
+    unsubscribe()
+  }
+})
+
+listener.startListening({
+  actionCreator: carregarUmaCategoria,
+  effect: async () => {
+    console.log('Carregar apenas uma categoria')
   }
 })
