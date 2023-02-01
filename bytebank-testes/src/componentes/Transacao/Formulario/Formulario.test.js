@@ -22,3 +22,29 @@ describe('Deve renderizar um campo de input', () => {
     expect(campoTexto).toHaveValue(50)
   })
 })
+
+describe('Deve chamar um evento', () => {
+  test('de onSubmit ao clicar em realizar transação', () => {
+    const realizarTransacao = jest.fn()
+
+    render(<Formulario realizarTransacao={realizarTransacao} />)
+    const botao = screen.getByRole('button')
+
+    userEvent.click(botao)
+    expect(realizarTransacao).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe('Deve ser possível selecionar', () => {
+  test('uma opção do elemento <select/>', () => {
+    render(<Formulario />)
+    const select = screen.getByRole('combobox')
+    userEvent.selectOptions(select, ['Depósito'])
+
+    expect(
+      screen.getByRole('option', { name: 'Selecione um tipo de transação' })
+        .selected
+    ).toBe(false)
+    expect(screen.getByRole('option', { name: 'Depósito' }).selected).toBe(true)
+  })
+})
