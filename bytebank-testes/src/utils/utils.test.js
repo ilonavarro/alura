@@ -24,8 +24,8 @@ describe('Quando eu realizo uma transação', () => {
   })
 })
 
-describe('Deve retornar o valor', () => {
-  test('do saldo atualizado com o rendimento', () => {
+describe('Testing the balance', () => {
+  it('should be test the new balance with the profit', () => {
     const calculaRendimento = jest.fn((saldo) => saldo + saldo * 0.005)
 
     const saldo = 100
@@ -33,7 +33,23 @@ describe('Deve retornar o valor', () => {
     const novoSaldo = calculaRendimento(saldo)
 
     expect(novoSaldo).toBe(100.5)
+  })
+  it('should be test if the function calculaRendimento was called', () => {
+    const calculaRendimento = jest.fn((saldo) => saldo + saldo * 0.005)
+
+    const saldo = 100
+
+    const novoSaldo = calculaRendimento(saldo)
+
     expect(calculaRendimento).toBeCalled()
+  })
+  it('should be test if the function calculaRendimento was called with saldo', () => {
+    const calculaRendimento = jest.fn((saldo) => saldo + saldo * 0.005)
+
+    const saldo = 100
+
+    const novoSaldo = calculaRendimento(saldo)
+
     expect(calculaRendimento).toHaveBeenCalledWith(saldo)
   })
 })
