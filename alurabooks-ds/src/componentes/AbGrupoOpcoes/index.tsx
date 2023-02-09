@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const SectionEstilizada = styled.section<{ selecionado: boolean }>`
@@ -35,24 +35,47 @@ const SectionEstilizada = styled.section<{ selecionado: boolean }>`
   }
 `;
 
-export const AbGrupoOpcoes = () => {
+export interface AbGrupoOpcao {
+  id: number;
+  titulo: string;
+  corpo: string;
+  rodape: string;
+}
+
+export interface AbGrupoOpcoesProps {
+  opcoes: AbGrupoOpcao[];
+  valorPadrao?: AbGrupoOpcao | null;
+  onChange?: (opcao: AbGrupoOpcao) => void;
+}
+
+export const AbGrupoOpcoes = ({
+  opcoes,
+  onChange,
+  valorPadrao,
+}: AbGrupoOpcoesProps) => {
+  const [selecao, setSelecao] = useState<AbGrupoOpcao | null>(
+    valorPadrao ?? null
+  );
+  const aoSelecionar = (opcao: AbGrupoOpcao): void => {
+    setSelecao(opcao);
+    if (onChange) {
+      onChange(opcao);
+    }
+  };
+
   return (
     <>
-      <SectionEstilizada selecionado={false}>
-        <header>E-book</header>
-        <strong>R$ 00.00</strong>
-        <footer>.pdf, .epub, .mob</footer>
-      </SectionEstilizada>
-      <SectionEstilizada selecionado={true}>
-        <header>E-book</header>
-        <strong>R$ 00.00</strong>
-        <footer>.pdf, .epub, .mob</footer>
-      </SectionEstilizada>
-      <SectionEstilizada selecionado={false}>
-        <header>E-book</header>
-        <strong>R$ 00.00</strong>
-        <footer>.pdf, .epub, .mob</footer>
-      </SectionEstilizada>
+      {opcoes.map(opcao => (
+        <SectionEstilizada
+          onClick={() => aoSelecionar(opcao)}
+          key={opcao.id}
+          selecionado={selecao?.id === opcao.id}
+        >
+          <header>{opcao.titulo}</header>
+          <strong>{opcao.corpo}</strong>
+          <footer>{opcao.rodape}</footer>
+        </SectionEstilizada>
+      ))}
     </>
   );
 };
