@@ -18,3 +18,4 @@ export * from './componentes/AbBotao';
 export * from './componentes/Card';
 export * from './componentes/AbTag';
 export * from './componentes/AbGrupoOpcoes';
+export * from './componentes/AbCampoTexto';
