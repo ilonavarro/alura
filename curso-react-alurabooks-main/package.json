@@ -21,6 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "eslint src/**/*.ts src/**/*.tsx",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -43,6 +44,10 @@
     ]
   },
   "devDependencies": {
-    "@types/testing-library__jest-dom": "^5.14.5"
+    "@types/testing-library__jest-dom": "^5.14.5",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "eslint": "^8.34.0",
+    "eslint-plugin-react": "^7.32.2"
   }
 }
