@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import BotaoNavegacao from '../BotaoNavegacao'
 import ModalCadastroUsuario from '../ModalCadastroUsuario'
@@ -6,6 +7,8 @@ import usuario from './assets/usuario.svg'
 import './BarraNavegacao.css'
 
 const BarraNavegacao = () => {
+  const [modalCadastroAberta, setModalCadastroAberta] = useState(false)
+
   return (
     <nav className='ab-navbar'>
       <h1 className='logo'>
@@ -48,8 +51,12 @@ const BarraNavegacao = () => {
             texto='Cadastrar-se'
             textoAltSrc='Icone representando um usuário'
             imagemSrc={usuario}
+            onClick={() => setModalCadastroAberta(true)}
           />
-          <ModalCadastroUsuario />
+          <ModalCadastroUsuario
+            aberta={modalCadastroAberta}
+            aoFechar={() => setModalCadastroAberta(false)}
+          />
         </li>
       </ul>
     </nav>
