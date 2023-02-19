@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { AbBotao, AbCampoTexto, AbModal } from 'ds-alurabooks'
 import { useState } from 'react'
+import { usePersistirToken } from '../../hooks'
 
 import imagemPrincipal from './assets/login.png'
 
@@ -19,6 +20,7 @@ const ModalLoginUsuario = ({
 }: PropsModalLoginUsuario) => {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
+  const setToken = usePersistirToken()
 
   const aoSubmeterFormular = (evento: React.FormEvent<HTMLFormElement>) => {
     evento.preventDefault()
@@ -29,7 +31,7 @@ const ModalLoginUsuario = ({
     axios
       .post('http://localhost:8000/public/login', usuario)
       .then(resposta => {
-        sessionStorage.setItem('token', resposta.data.access_token)
+        setToken(resposta.data.access_token)
         setEmail('')
         setSenha('')
         aoFechar()
