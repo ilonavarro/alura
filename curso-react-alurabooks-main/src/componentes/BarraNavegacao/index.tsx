@@ -1,16 +1,18 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import BotaoNavegacao from '../BotaoNavegacao'
 import ModalCadastroUsuario from '../ModalCadastroUsuario'
 import ModalLoginUsuario from '../ModalLoginUsuario'
 import logo from './assets/logo.png'
 import usuario from './assets/usuario.svg'
 import './BarraNavegacao.css'
-import { useObterToken } from '../../hooks'
+import { useLimparToken, useObterToken } from '../../hooks'
 
 const BarraNavegacao = () => {
   const [modalCadastroAberta, setModalCadastroAberta] = useState(false)
   const [modalLoginAberta, setModalLoginAberta] = useState(false)
+
+  const navigate = useNavigate()
 
   const token = useObterToken()
 
@@ -19,6 +21,13 @@ const BarraNavegacao = () => {
   const aoEfetuarLogin = () => {
     setModalCadastroAberta(false)
     setUsuarioEstaLogado(true)
+  }
+
+  const efetuarLogout = () => {
+    setUsuarioEstaLogado(false)
+    useLimparToken()
+    setModalLoginAberta(false)
+    navigate('/')
   }
 
   return (
@@ -84,6 +93,14 @@ const BarraNavegacao = () => {
           <>
             <li>
               <Link to='/minha-conta/pedidos'>Minha Conta</Link>
+            </li>
+            <li>
+              <BotaoNavegacao
+                texto='Logout'
+                textoAltSrc='Icone representando um usuário'
+                imagemSrc={usuario}
+                onClick={efetuarLogout}
+              />
             </li>
           </>
         )}
