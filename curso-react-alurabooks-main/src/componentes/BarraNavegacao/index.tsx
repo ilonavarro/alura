@@ -54,7 +54,7 @@ const BarraNavegacao = () => {
           <ul className='submenu'>
             {categorias.map(categoria => (
               <li key={categoria.id}>
-                <Link to={`/categoria/${categoria.slug}`}>{categoria.nome}</Link>
+                <Link to={`/categorias/${categoria.slug}`}>{categoria.nome}</Link>
               </li>
             ))}
           </ul>
