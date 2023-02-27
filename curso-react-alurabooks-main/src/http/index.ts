@@ -1,3 +1,4 @@
+import { ICategoria } from './../interfaces/ICategoria'
 import { useObterToken } from './../hooks/index'
 import axios from 'axios'
 
@@ -24,3 +25,12 @@ http.interceptors.request.use(
 )
 
 export default http
+
+export const obterCategoriaPorSlug = async (slug: string) => {
+  const resposta = await http.get<ICategoria[]>('categorias', {
+    params: {
+      slug
+    }
+  })
+  return resposta.data[0]
+}

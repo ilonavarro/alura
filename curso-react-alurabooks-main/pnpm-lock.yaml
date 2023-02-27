@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@tanstack/react-query': ^4.24.10
   '@testing-library/jest-dom': ^5.16.5
   '@testing-library/react': ^13.3.0
   '@testing-library/user-event': ^13.5.0
@@ -23,6 +24,7 @@ specifiers:
   web-vitals: ^2.1.4
 
 dependencies:
+  '@tanstack/react-query': 4.24.10_biqbaboplfbrettd7655fr4n2y
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/user-event': 13.5.0
@@ -2219,6 +2221,28 @@ packages:
       loader-utils: 2.0.4
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@tanstack/query-core/4.24.10:
+    resolution: {integrity: sha512-2QywqXEAGBIUoTdgn1lAB4/C8QEqwXHj2jrCLeYTk2xVGtLiPEUD8jcMoeB2noclbiW2mMt4+Fq7fZStuz3wAQ==}
+    dev: false
+
+  /@tanstack/react-query/4.24.10_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-FY1DixytOcNNCydPQXLxuKEV7VSST32CAuJ55BjhDNqASnMLZn+6c30yQBMrODjmWMNwzfjMZnq0Vw7C62Fwow==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@tanstack/query-core': 4.24.10
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
 
   /@testing-library/dom/8.20.0:
@@ -9475,6 +9499,14 @@ packages:
     dependencies:
       querystringify: 2.2.0
       requires-port: 1.0.0
+    dev: false
+
+  /use-sync-external-store/1.2.0_react@18.2.0:
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /util-deprecate/1.0.2:
