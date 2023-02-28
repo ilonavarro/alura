@@ -1,3 +1,4 @@
+import { ILivro } from './../interfaces/ILivro'
 import { ICategoria } from './../interfaces/ICategoria'
 import { useObterToken } from './../hooks/index'
 import axios from 'axios'
@@ -33,4 +34,9 @@ export const obterCategoriaPorSlug = async (slug: string) => {
     }
   })
   return resposta.data[0]
+}
+
+export const obterLivrosDestaque = async (tipo: string) => {
+  const resposta = await http.get<ILivro[]>(`public/${tipo}`)
+  return resposta.data
 }
