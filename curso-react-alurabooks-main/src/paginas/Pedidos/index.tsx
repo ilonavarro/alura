@@ -13,7 +13,7 @@ const Pedidos = () => {
     http
       .get<IPedido[]>('pedidos')
       .then(resposta => setPedidos(resposta.data))
-      .catch(erro => console.log(erro))
+      .catch(erro => alert(erro))
   }, [])
 
   const excluir = (pedido: IPedido) => {
@@ -23,7 +23,7 @@ const Pedidos = () => {
         setPedidos(pedidos.filter(p => p.id !== pedido.id))
         alert(`Você excluiu o pedido ${pedido.id}`)
       })
-      .catch(erro => console.log(erro))
+      .catch(erro => alert(erro))
   }
 
   return (

@@ -18,7 +18,6 @@ const BarraNavegacao = () => {
 
   useEffect(() => {
     http.get<ICategoria[]>('categorias').then(resposta => {
-      console.table(resposta.data)
       setCategorias(resposta.data)
     })
   }, [])

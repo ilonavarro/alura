@@ -1,6 +1,7 @@
 import { ILivro } from './../interfaces/ILivro'
 import { ICategoria } from './../interfaces/ICategoria'
 import { useObterToken } from './../hooks/index'
+import { IAutor } from '../interfaces/IAutor'
 import axios from 'axios'
 
 const http = axios.create({
@@ -20,7 +21,7 @@ http.interceptors.request.use(
     return config
   },
   function (error) {
-    console.log('Erro no interceptor do axios')
+    alert('Erro no interceptor do axios')
     return Promise.reject(error)
   }
 )
@@ -48,4 +49,26 @@ export const obterProdutosDaCategoria = async (categoria: ICategoria) => {
     }
   })
   return resposta.data
+}
+
+export const obterAutor = async (autorId: number) => {
+  try {
+    const resposta = await http.get<IAutor>(`autores/${autorId}`)
+    return resposta.data
+  } catch (error) {
+    console.error('Não foi possivel obter o autor!')
+    console.error(`Erro: ${error}`)
+  }
+}
+
+export const obterLivro = async (slug: string) => {
+  const resposta = await http.get<ILivro[]>('livros', {
+    params: {
+      slug
+    }
+  })
+  if (resposta.data.length === 0) {
+    return null
+  }
+  return resposta.data[0]
 }
